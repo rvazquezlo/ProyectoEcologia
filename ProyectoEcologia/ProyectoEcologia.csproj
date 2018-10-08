@@ -78,6 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Conexion.cs" />
     <Compile Include="DatosGenerales.xaml.cs">
       <DependentUpon>DatosGenerales.xaml</DependentUpon>
     </Compile>
