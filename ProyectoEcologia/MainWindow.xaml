@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoEcologia"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="310.11">
     <Grid>
-        
+        <Label x:Name="lbUsuario" Content="Usuario:" HorizontalAlignment="Left" Margin="39,47,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="lbContrasena" Content="Contrasena:" HorizontalAlignment="Left" Margin="39,111,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <PasswordBox x:Name="pboxContrasena" HorizontalAlignment="Left" Margin="39,147,0,0" VerticalAlignment="Top" Width="213" FontSize="16"/>
+        <TextBox x:Name="tbUsuario" HorizontalAlignment="Left" Height="23" Margin="39,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" FontSize="16"/>
+        <Button x:Name="btAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="98,231,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Click="btAceptar_Click"/>
+
     </Grid>
 </Window>
