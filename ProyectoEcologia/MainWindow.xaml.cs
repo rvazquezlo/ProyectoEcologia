@@ -31,6 +31,10 @@ namespace ProyectoEcologia
             tbUsuario.Focus();
         }
 
+        /**
+         * Cuando se presiona boton de Aceptar se comparan la contrasena y el usuario ingresados
+         * con la informacion en la base de datos para dar o negar acceso a la ventana de Home
+         */
         private void btAceptar_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection conexion;
@@ -47,14 +51,21 @@ namespace ProyectoEcologia
                 {
                     if (lector.GetString(0).Equals(pboxContrasena.Password.ToString()))
                     {
-
+                        Home ventana = new Home();
+                        this.Close();
+                        ventana.Show();
                     }
+                    else
+                        MessageBox.Show("Contrasena equivocada. Por favor intente de nuevo.");
                 }
+                else
+                    MessageBox.Show("Usuario equivocado. Por favor intente de nuevo");
             }catch(Exception ex)
             {
-
+                MessageBox.Show("error: " + ex);//Quitar despues de pruebas
             }
             
         }
+        
     }
 }

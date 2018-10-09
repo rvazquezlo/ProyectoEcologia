@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoEcologia"
         mc:Ignorable="d"
-        Title="Alta" Height="367.279" Width="467.647">
+        Title="Alta" Height="367.279" Width="467.647" Loaded="Window_Loaded">
     <Grid>
         <Image x:Name="foto1" HorizontalAlignment="Left" Height="100" Margin="33,26,0,0" VerticalAlignment="Top" Width="178"/>
-        <TextBox x:Name="tbPrecio" HorizontalAlignment="Left" Height="29" Margin="33,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122"/>
-        <TextBox x:Name="tbNombre" HorizontalAlignment="Left" Height="23" Margin="309,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbDescpricion" HorizontalAlignment="Left" Height="101" Margin="248,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
         <Button x:Name="btRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="33,296,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btSiguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="279,296,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btSiguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="279,296,0,0" VerticalAlignment="Top" Width="75" Click="btSiguiente_Click"/>
         <RadioButton x:Name="rbAprobar" Content="Aprobar" HorizontalAlignment="Left" Margin="279,218,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="rbNegar" Content="Negar" HorizontalAlignment="Left" Margin="279,246,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbDescripcion" Content="Descripcion:" HorizontalAlignment="Left" Margin="248,66,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbNombre" Content="Nombre:" HorizontalAlignment="Left" Margin="248,26,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbPrecio" Content="Precio:" HorizontalAlignment="Left" Margin="33,149,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbNombre2" Content="" HorizontalAlignment="Left" Margin="309,26,0,0" VerticalAlignment="Top" Width="114"/>
+        <Label x:Name="lbDescripcion2" Content="" HorizontalAlignment="Left" Margin="248,97,0,0" VerticalAlignment="Top" Height="102" Width="175"/>
+        <Label x:Name="lbPrecio2" Content="" HorizontalAlignment="Left" Margin="101,149,0,0" VerticalAlignment="Top" Width="87"/>
 
     </Grid>
 </Window>

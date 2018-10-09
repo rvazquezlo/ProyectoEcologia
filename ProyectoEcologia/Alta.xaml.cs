@@ -23,5 +23,32 @@ namespace ProyectoEcologia
         {
             InitializeComponent();
         }
+
+        /** 
+         * En cuanto se carga la ventana, aparece la informacion del primer producto a aprobar.
+         * Ademas, aparece el radio button de Aprobar seleccionado por default.
+         */
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Producto producto;
+
+            producto = new Producto();
+            producto = producto.obtenerSiguiente();
+            if(producto == null)
+                MessageBox.Show("Por el momento no hay productos por aprobar en espera");
+            else
+            {
+                lbNombre2.Content = producto.getNombre();
+                lbDescripcion2.Content = producto.getDescripcion();
+                lbPrecio2.Content = "$" + producto.getPrecio().ToString();
+            }
+
+        }
+
+        private void btSiguiente_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
