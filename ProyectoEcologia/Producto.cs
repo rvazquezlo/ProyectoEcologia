@@ -15,6 +15,7 @@ namespace ProyectoEcologia
         private double precio;
         private String nombre;
         private String descripcion;
+        private Int16 idProducto;
 
         /**
          * Constructor vacio
@@ -39,11 +40,12 @@ namespace ProyectoEcologia
         /**
          * 
          */
-        public Producto(double precio, String nombre, String descripcion)
+        public Producto(double precio, String nombre, String descripcion, Int16 idProducto)
         {
             this.precio = precio;
             this.nombre = nombre;
             this.descripcion = descripcion;
+            this.idProducto = idProducto;
         }
 
         public String getNombre()
@@ -75,11 +77,11 @@ namespace ProyectoEcologia
             try
             {
                 comando = new SqlCommand(String.Format(
-                    "select top 1 precio, nombre, descripcion from Producto where estado like '%espera%'"),
+                    "select top 1 precio, nombre, descripcion, idProducto from Producto where estado like '%espera%'"),
                     conexion);//queda pendiente foto
                 lector = comando.ExecuteReader();
                 if (lector.Read())
-                    siguiente = new Producto(lector.GetDouble(0), lector.GetString(1), lector.GetString(2));
+                    siguiente = new Producto(lector.GetDouble(0), lector.GetString(1), lector.GetString(2), lector.GetInt16(3));
             }catch(Exception e)
             {
                 MessageBox.Show("Error en clase Producto: " + e);//Quitar despues de prueba    
@@ -88,19 +90,32 @@ namespace ProyectoEcologia
             return siguiente;
         }
 
-        public int actualizarEstado()
+        /**
+         * el nuevoEstado define si se aprobo un producto o no. 1 es que no se aprobo y 0 es que si se aprobo
+         * 
+         * Regresa actualizado 
+         */
+        public int actualizarEstado(int estado)
         {
             int actualizado;
+            String nuevoEstado;
             SqlCommand comando;
             SqlConnection conexion;
             SqlDataReader lector;
 
             try
             {
+                conexion = Conexion.agregarConexion();
+                if (estado == 0)
+                    nuevoEstado = "En venta";
+                else
+                    nuevoEstado = "Negado";
+                comando = new SqlCommand(String.Format("update Producto set estado = '{0}' where idProducto = {1}", nuevoEstado, idProducto), conexion);
 
-            }catch
+            }catch(Exception e)
             {
-
+                actualizado = 0;
+                MessageBox.Show("Error: " + e);
             }
 
             return actualizado;

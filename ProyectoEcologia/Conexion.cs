@@ -44,9 +44,7 @@ namespace ProyectoEcologia
                 comando = new SqlCommand(String.Format("select nombre from Categoria"), conexion);
                 lector = comando.ExecuteReader();
                 while (lector.Read())
-                {
                     cb.Items.Add(lector["nombre"].ToString());//Lo que esta en columna nombre se mete al combo
-                }
                 cb.SelectedIndex = 0; //El combo empieza mostrando el primer elemento
                 lector.Close();
             }
