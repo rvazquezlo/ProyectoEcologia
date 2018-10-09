@@ -93,9 +93,15 @@ namespace ProyectoEcologia
             int actualizado;
             SqlCommand comando;
             SqlConnection conexion;
-            SqlDataReader lector; 
+            SqlDataReader lector;
 
+            try
+            {
 
+            }catch
+            {
+
+            }
 
             return actualizado;
         } 
