@@ -66,7 +66,7 @@ namespace ProyectoEcologia
          */
         public Producto obtenerSiguiente()
         {
-            SqlConnection conexion;
+            SqlConnection conexion = Conexion.agregarConexion();
             SqlCommand comando;
             SqlDataReader lector;
             Producto siguiente;
@@ -74,7 +74,6 @@ namespace ProyectoEcologia
             siguiente = null;
             try
             {
-                conexion = Conexion.agregarConexion();
                 comando = new SqlCommand(String.Format(
                     "select top 1 precio, nombre, descripcion from Producto where estado like '%espera%'"),
                     conexion);//queda pendiente foto
@@ -85,7 +84,20 @@ namespace ProyectoEcologia
             {
                 MessageBox.Show("Error en clase Producto: " + e);//Quitar despues de prueba    
             }
+            conexion.Close();
             return siguiente;
         }
+
+        public int actualizarEstado()
+        {
+            int actualizado;
+            SqlCommand comando;
+            SqlConnection conexion;
+            SqlDataReader lector; 
+
+
+
+            return actualizado;
+        } 
     }
 }

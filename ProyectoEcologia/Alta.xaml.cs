@@ -24,18 +24,16 @@ namespace ProyectoEcologia
             InitializeComponent();
         }
 
-        /** 
-         * En cuanto se carga la ventana, aparece la informacion del primer producto a aprobar.
-         * Ademas, aparece el radio button de Aprobar seleccionado por default.
+        /**
+         * Metodo para obtener el siguiente producto en espera
          */
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void obtenerSiguiente()
         {
             Producto producto;
 
             producto = new Producto();
             producto = producto.obtenerSiguiente();
-            if(producto == null)
+            if (producto == null)
                 MessageBox.Show("Por el momento no hay productos por aprobar en espera");
             else
             {
@@ -43,12 +41,24 @@ namespace ProyectoEcologia
                 lbDescripcion2.Content = producto.getDescripcion();
                 lbPrecio2.Content = "$" + producto.getPrecio().ToString();
             }
-
         }
 
+        /** 
+         * En cuanto se carga la ventana, aparece la informacion del primer producto a aprobar.
+         * Ademas, aparece el radio button de Aprobar seleccionado por default.
+         */
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            obtenerSiguiente();
+            rbAprobar.IsChecked = true;
+        }
+
+        /**
+         * Se llama al metodo obtenerSiguiente y se actualiza el estado del producto en la bd. 
+         */
         private void btSiguiente_Click(object sender, RoutedEventArgs e)
         {
-
+            //Actualizar
         }
     }
 }
