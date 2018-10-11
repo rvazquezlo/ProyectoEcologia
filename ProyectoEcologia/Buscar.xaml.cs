@@ -23,5 +23,51 @@ namespace ProyectoEcologia
         {
             InitializeComponent();
         }
+
+        /**
+         * Se llena combo box de categorias en cuanto la ventana se carga 
+         */
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Llenar combo
+            Conexion conexion;
+
+            try
+            {
+                conexion = new Conexion();
+                conexion.llenarCombo(cbCategorias);
+            }
+            catch(Exception ex)//no necesario
+            {
+                MessageBox.Show("error: " + ex);
+            }
+        }
+
+        /**
+        * Regresa a ventana de Home y cierra esta 
+        */
+        private void btRegresar_Click(object sender, RoutedEventArgs e)
+        {
+            Home ventana = new Home();
+            this.Close();
+            ventana.Show();
+        }
+
+        /**
+         * Al dar click en buscar se muestran todos los productos de dicha categoria
+         */
+        private void btBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            Producto producto;
+
+            try
+            {
+                producto = new Producto();
+                dgProductos.ItemsSource = producto.buscarProductoPorCategoria(cbCategorias.SelectedIndex + 1);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("error: " + ex);
+            }
+        }
     }
 }

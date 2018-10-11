@@ -48,6 +48,13 @@ namespace ProyectoEcologia
             this.idProducto = idProducto;
         }
 
+        public Producto(double precio, String nombre, String descripcion, String estado)
+        {
+            this.precio = precio;
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.estado = estado;
+        }
         public Producto(Int16 idProducto)
         {
             this.idProducto = idProducto;
@@ -88,7 +95,7 @@ namespace ProyectoEcologia
             try
             {
                 comando = new SqlCommand(String.Format(
-                    "select top 1 precio, nombre, descripcion, idProducto from Producto where estado like '%espera%'"),
+                    "select top 1 (precio, nombre, descripcion, idProducto) from Producto where estado like '%espera%'"),
                     conexion);//queda pendiente foto
                 lector = comando.ExecuteReader();
                 if (lector.Read())
@@ -182,6 +189,41 @@ namespace ProyectoEcologia
             }
             conexion.Close();
             return productosEspera;
+        }
+
+        /**
+         * Busca los productos por el nombre de categoria
+         * @param: nombre de la categoria que se busca
+         * @return: lista de productos, null si hubo error
+         */
+        public List<Producto> buscarProductoPorCategoria(int idCategoria)
+        {
+            SqlConnection conexion;
+            SqlCommand comando;
+            SqlDataReader lector;
+            List<Producto> productos;
+            Producto producto;
+
+            conexion = Conexion.agregarConexion();
+            productos = new List<Producto>();
+            try
+            {
+                comando = new SqlCommand(String.Format
+                    ("select nombre, descripcion, precio, estado from Producto where idCategoria = {0}", idCategoria), conexion);
+                lector = comando.ExecuteReader();
+                while (lector.Read())
+                {
+                    producto = new Producto(lector.GetDouble(2), lector.GetString(0), lector.GetString(1), lector.GetString(3));
+                    productos.Add(producto);
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: " + e);
+            }
+            conexion.Close();
+            return productos;
         }
     }
 }

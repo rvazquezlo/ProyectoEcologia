@@ -39,7 +39,31 @@ namespace ProyectoEcologia
         */
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Cliente cliente;
+            Producto producto;
+            int numeroUsuarios, productosEspera, productosVendidos;
 
+            try
+            {
+                cliente = new Cliente();
+                producto = new Producto();
+                numeroUsuarios = cliente.obtenerNumeroClientes();
+                productosEspera = producto.contarProductosEnEspera();
+                productosVendidos = producto.contarProductosVendidos();
+
+                if ((numeroUsuarios + productosEspera + productosVendidos) >= 0)//no hubo error en ninguno
+                {
+                    lbNumeroUsuarios2.Content = numeroUsuarios.ToString();
+                    lbProductosEnEspera2.Content = productosEspera.ToString();
+                    lbProductosVendidos2.Content = lbProductosVendidos2.ToString();
+                }
+                else
+                    MessageBox.Show("Error en las cuentas");//Quitar
+                
+            }catch(Exception ex)//No se produce ningun error
+            {
+                MessageBox.Show("error: " + ex);
+            }
         }
     }
 }
