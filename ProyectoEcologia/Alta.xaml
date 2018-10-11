@@ -8,16 +8,18 @@
         Title="Alta" Height="367.279" Width="467.647" Loaded="Window_Loaded">
     <Grid>
         <Image x:Name="foto1" HorizontalAlignment="Left" Height="100" Margin="33,26,0,0" VerticalAlignment="Top" Width="178"/>
-        <Button x:Name="btRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="33,296,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="33,296,0,0" VerticalAlignment="Top" Width="75" Click="btRegresar_Click"/>
         <Button x:Name="btSiguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="279,296,0,0" VerticalAlignment="Top" Width="75" Click="btSiguiente_Click"/>
-        <RadioButton x:Name="rbAprobar" Content="Aprobar" HorizontalAlignment="Left" Margin="279,218,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="rbNegar" Content="Negar" HorizontalAlignment="Left" Margin="279,246,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbAprobar" Content="Aprobar" HorizontalAlignment="Left" Margin="288,222,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbNegar" Content="Negar" HorizontalAlignment="Left" Margin="288,253,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbDescripcion" Content="Descripcion:" HorizontalAlignment="Left" Margin="248,66,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbNombre" Content="Nombre:" HorizontalAlignment="Left" Margin="248,26,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbPrecio" Content="Precio:" HorizontalAlignment="Left" Margin="33,149,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbNombre2" Content="" HorizontalAlignment="Left" Margin="309,26,0,0" VerticalAlignment="Top" Width="114"/>
         <Label x:Name="lbDescripcion2" Content="" HorizontalAlignment="Left" Margin="248,97,0,0" VerticalAlignment="Top" Height="102" Width="175"/>
         <Label x:Name="lbPrecio2" Content="" HorizontalAlignment="Left" Margin="101,149,0,0" VerticalAlignment="Top" Width="87"/>
+        <Label x:Name="lbNumeroProducto" Content="Numero de producto:" HorizontalAlignment="Left" Margin="33,181,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbNumeroProducto2" Content="" HorizontalAlignment="Left" Margin="188,181,0,0" VerticalAlignment="Top" Width="60"/>
 
     </Grid>
 </Window>

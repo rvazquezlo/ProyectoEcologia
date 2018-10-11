@@ -44,7 +44,7 @@ namespace ProyectoEcologia
             try
             {
                 conexion = Conexion.agregarConexion();
-                comando = new SqlCommand(String.Format("select contrasena from Usuario where idUsuario = '{0}'",
+                comando = new SqlCommand(String.Format("select contrasena from Usuario where nombreUsuario = '{0}'",
                     tbUsuario.Text), conexion);
                 lector = comando.ExecuteReader();
                 if (lector.Read()) //hubo una contrasena para el usuario ingresado

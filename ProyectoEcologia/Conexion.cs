@@ -17,7 +17,7 @@ namespace ProyectoEcologia
 
             try
             {
-                conexion = new SqlConnection("Copy paste la direccion de base de datos");
+                conexion = new SqlConnection("Data Source=112SALAS21;Initial Catalog=NatureYou;Persist Security Info=True;User ID=sa;Password=sqladmin");
                 conexion.Open();
                 MessageBox.Show("Conectado");//Quitar despues de pruebas
             }

@@ -25,7 +25,8 @@ namespace ProyectoEcologia
         }
 
         /**
-         * Metodo para obtener el siguiente producto en espera y poner su informacion en la ventana
+         * Metodo para obtener el siguiente producto en espera y poner su informacion en la ventana.
+         * Si no hay productos en espera, se regresa a ventana de Home
          */
         private void obtenerSiguiente()
         {
@@ -34,12 +35,18 @@ namespace ProyectoEcologia
             producto = new Producto();
             producto = producto.obtenerSiguiente();
             if (producto == null)
+            {
                 MessageBox.Show("Por el momento no hay productos por aprobar en espera");
+                Home ventana = new Home();
+                this.Close();
+                ventana.Show();
+            }
             else
             {
                 lbNombre2.Content = producto.getNombre();
                 lbDescripcion2.Content = producto.getDescripcion();
                 lbPrecio2.Content = "$" + producto.getPrecio().ToString();
+                lbNumeroProducto2.Content = producto.getIdProducto().ToString();
             }
         }
 
@@ -55,14 +62,45 @@ namespace ProyectoEcologia
 
         /**
          * Se llama al metodo obtenerSiguiente y se actualiza el estado del producto en la bd. 
+         * Si no hay productos y se presiona este boton, se muestra un mensaje y se regresa a la ventana Home.
+         * @uses obtenerSiguiente();
          */
         private void btSiguiente_Click(object sender, RoutedEventArgs e)
         {
             Producto producto;
+            int estado;
 
-            producto = new Producto()
-            //Actualizar
+            try
+            {
+                //actualizar
+                producto = new Producto(Int16.Parse(lbNumeroProducto2.ContentStringFormat));
+                if (rbAprobar.IsChecked == true)
+                    estado = 0;
+                else
+                    estado = 1;
+                producto.actualizarEstado(estado);
+
+                //Obtener siguiente producto
+                obtenerSiguiente();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error:" + ex);    
+            }
+
             
+
+        }
+
+        /**
+         * Regresa a la ventana de Home 
+         */
+
+        private void btRegresar_Click(object sender, RoutedEventArgs e)
+        {
+            Home ventana = new Home();
+            this.Close();
+            ventana.Show();
         }
     }
 }

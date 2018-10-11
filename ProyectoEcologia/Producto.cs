@@ -68,6 +68,11 @@ namespace ProyectoEcologia
             return precio;
         }
 
+        public Int16 getIdProducto()
+        {
+            return idProducto;
+        }
+
         /**
          * Regresa el siguiente producto en la bd que este en estado de espera
          */
