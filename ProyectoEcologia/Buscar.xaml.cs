@@ -29,13 +29,12 @@ namespace ProyectoEcologia
          */
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //Llenar combo
             Conexion conexion;
 
             try
             {
                 conexion = new Conexion();
-                conexion.llenarCombo(cbCategorias);
+                conexion.llenarCombo(cbCategorias);//metodo en conexion que llena combo
             }
             catch(Exception ex)//no necesario
             {
@@ -63,7 +62,7 @@ namespace ProyectoEcologia
             try
             {
                 producto = new Producto();
-                dgProductos.ItemsSource = producto.buscarProductoPorCategoria(cbCategorias.SelectedIndex + 1);
+                dgProductos.ItemsSource = producto.buscarProductoPorCategoria(cbCategorias.SelectedIndex + 1);//carga lista de productos
             }catch(Exception ex)
             {
                 MessageBox.Show("error: " + ex);

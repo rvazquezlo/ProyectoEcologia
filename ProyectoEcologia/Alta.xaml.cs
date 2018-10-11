@@ -33,16 +33,17 @@ namespace ProyectoEcologia
             Producto producto;
 
             producto = new Producto();
-            producto = producto.obtenerSiguiente();
-            if (producto == null)
+            producto = producto.obtenerSiguiente();//Obtiene el siguiente producto
+            if (producto == null)//No hubo producto en espera. Entonces regresa a ventana Home
             {
                 MessageBox.Show("Por el momento no hay productos por aprobar en espera");
                 Home ventana = new Home();
                 this.Close();
                 ventana.Show();
             }
-            else
+            else//Si hubo producto
             {
+                //Agregar informacion a lugares respectivos
                 lbNombre2.Content = producto.getNombre();
                 lbDescripcion2.Content = producto.getDescripcion();
                 lbPrecio2.Content = "$" + producto.getPrecio().ToString();

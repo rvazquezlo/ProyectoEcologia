@@ -47,12 +47,14 @@ namespace ProyectoEcologia
             {
                 cliente = new Cliente();
                 producto = new Producto();
-                numeroUsuarios = cliente.obtenerNumeroClientes();
-                productosEspera = producto.contarProductosEnEspera();
-                productosVendidos = producto.contarProductosVendidos();
+                numeroUsuarios = cliente.obtenerNumeroClientes();//obtener numero de usuarios a partir de un metodo en la clase Cliente
+                productosEspera = producto.contarProductosEnEspera();//obtener numero de productos en espera de aprobacion a partir de un metodo en la clase Producto
+                productosVendidos = producto.contarProductosVendidos();//obtener numero de productos vendidos a partir de un metodo en la clase Producto
 
-                if ((numeroUsuarios + productosEspera + productosVendidos) >= 0)//no hubo error en ninguno
+                //Se utilizan tres condiciones, ya que seria incorrecto evaluar una suma de los resultados
+                if (numeroUsuarios >= 0 &&  productosEspera >= 0 && productosVendidos >= 0)//no hubo error en ninguno, ya que cuando lo hay, cada metodo regresa -1
                 {
+                    //Poner la informacion en sus espacios designados en la ventana DatosGenerales
                     lbNumeroUsuarios2.Content = numeroUsuarios.ToString();
                     lbProductosEnEspera2.Content = productosEspera.ToString();
                     lbProductosVendidos2.Content = lbProductosVendidos2.ToString();

@@ -13,11 +13,11 @@ namespace ProyectoEcologia
         private String nombre;
 
         /**
-         * Constructor vacio
+         * Constructor vacio. Asigna un String vacio al atributo nombre
          */
         public Cliente()
         {
-
+            nombre = "";
         }
 
         /**
@@ -36,6 +36,7 @@ namespace ProyectoEcologia
             return nombre;
         }
 
+
         /**
          * Cuenta el numero de clientes que hay dados de alta en la bd
          * @return: El numero de clientes dados de alta en la bd, -1 si hubo error
@@ -47,13 +48,15 @@ namespace ProyectoEcologia
             SqlCommand comando;
             int numeroUsuarios;
 
-            conexion = Conexion.agregarConexion();
+            conexion = Conexion.agregarConexion();//abrir conexion
             try
             {
-                comando = new SqlCommand(String.Format("select count(Cliente.nombre) from Cliente"), conexion);
-                lector = comando.ExecuteReader();
-                numeroUsuarios = int.Parse(lector.GetString(0));
-            }catch(Exception e)
+                comando = new SqlCommand(String.Format("select count(Cliente.nombre) from Cliente"), conexion);//query
+                lector = comando.ExecuteReader();//ejecutar
+                numeroUsuarios = int.Parse(lector.GetString(0)); //obtener informacion de la consulta de sql
+                lector.Close();
+            }
+            catch(Exception e)
             {
                 MessageBox.Show("error: " + e);
                 numeroUsuarios = -1;

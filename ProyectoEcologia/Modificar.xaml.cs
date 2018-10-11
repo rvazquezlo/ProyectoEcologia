@@ -34,7 +34,7 @@ namespace ProyectoEcologia
             try
             {
                 info = new Informacion();
-                if (info.agregarInformacion(tbLink.Text, tbDatosBasura.Text) == 1)//se agrego a la bd
+                if (info.agregarInformacion(tbLink.Text, tbDatosBasura.Text) == 1)//se agrego a la bd con el metodo agregarInformacion
                     MessageBox.Show("Informacion agregada correctamente");
                 else
                     MessageBox.Show("Error: No se agrego informacion"); //quitar
@@ -50,8 +50,8 @@ namespace ProyectoEcologia
         private void btRegresar_Click(object sender, RoutedEventArgs e)
         {
             Home ventana = new Home();
-            this.Close();
-            ventana.Show();
+            this.Close();//Cerrar ventana actual
+            ventana.Show();//Abrir ventana de Home
         }
     }
 }

@@ -11,13 +11,16 @@ namespace ProyectoEcologia
 {
     class Conexion
     {
+        /**
+         * Metodo que se utiliza para abir conexion con sql
+         */
         public static SqlConnection agregarConexion()
         {
             SqlConnection conexion;
 
             try
             {
-                conexion = new SqlConnection("Data Source=112SALAS21;Initial Catalog=NatureYou;Persist Security Info=True;User ID=sa;Password=sqladmin");
+                conexion = new SqlConnection("Data Source=112SALAS21;Initial Catalog=NatureYou;Persist Security Info=True;User ID=sa;Password=sqladmin");//cambiar dependiendo de la maquina que se utilice
                 conexion.Open();
                 MessageBox.Show("Conectado");//Quitar despues de pruebas
             }
@@ -38,9 +41,9 @@ namespace ProyectoEcologia
             SqlDataReader lector;
             SqlConnection conexion;
 
+            conexion = Conexion.agregarConexion();
             try
             {
-                conexion = Conexion.agregarConexion();
                 comando = new SqlCommand(String.Format("select nombre from Categoria"), conexion);
                 lector = comando.ExecuteReader();
                 while (lector.Read())
@@ -52,6 +55,7 @@ namespace ProyectoEcologia
             {
                 MessageBox.Show("Error. No se pudo llenar el combo " + e);//Quitar
             }
+            conexion.Close();//se cierra conexion por seguridad
         }
 
     }

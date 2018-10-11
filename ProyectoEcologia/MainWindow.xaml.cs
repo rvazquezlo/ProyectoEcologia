@@ -43,17 +43,17 @@ namespace ProyectoEcologia
 
             try
             {
-                conexion = Conexion.agregarConexion();
+                conexion = Conexion.agregarConexion();//Se conecta con sql
                 comando = new SqlCommand(String.Format("select contrasena from Usuario where nombreUsuario = '{0}'",
-                    tbUsuario.Text), conexion);
+                    tbUsuario.Text), conexion);//query solicitando contrasena correspondiente al nombre de usuario ingresado en el espacio correspondiente
                 lector = comando.ExecuteReader();
                 if (lector.Read()) //hubo una contrasena para el usuario ingresado
                 {
-                    if (lector.GetString(0).Equals(pboxContrasena.Password.ToString()))
+                    if (lector.GetString(0).Equals(pboxContrasena.Password.ToString()))//La contrasena que ingreso el usuario es correcta
                     {
                         Home ventana = new Home();
-                        this.Close();
-                        ventana.Show();
+                        this.Close();//cierra esta ventana
+                        ventana.Show();//manda a la siguiente ventana
                     }
                     else
                         MessageBox.Show("Contrasena equivocada. Por favor intente de nuevo.");
@@ -63,9 +63,7 @@ namespace ProyectoEcologia
             }catch(Exception ex)
             {
                 MessageBox.Show("error: " + ex);//Quitar despues de pruebas
-            }
-            
-        }
-        
+            }  
+        }  
     }
 }
