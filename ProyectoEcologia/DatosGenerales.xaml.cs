@@ -33,5 +33,13 @@ namespace ProyectoEcologia
             this.Close();
             ventana.Show();
         }
+
+        /**
+         * En cuanto se cargue la ventana se muestra toda la informacion utilizando las clases Cliente y Producto
+        */
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

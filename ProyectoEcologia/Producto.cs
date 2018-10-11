@@ -130,5 +130,58 @@ namespace ProyectoEcologia
             conexion.Close();
             return actualizado;
         } 
+
+        /**
+         * Cuenta los productos vendidos en la bd
+         * @return: un entero que representa el numero de productos vendidos, -1 si hubo algun error
+         */
+        public int contarProductosVendidos()
+        {
+            int productosVendidos;
+            SqlConnection conexion;
+            SqlCommand comando;
+            SqlDataReader lector;
+
+            conexion = Conexion.agregarConexion();
+            try
+            {
+                comando = new SqlCommand(String.Format("select count(estado) from Producto where estado like '%vendido%'"), conexion);
+                lector = comando.ExecuteReader();
+                productosVendidos = int.Parse(lector.GetString(0));
+            }catch(Exception e)
+            {
+                productosVendidos = -1;
+                MessageBox.Show("Error: " + e);
+            }
+            conexion.Close();
+            return productosVendidos;
+        }
+
+        /**
+        * Cuenta los productos en espera en la bd
+        * @return: un entero que representa el numero de productos en espera, -1 si hubo algun error
+        */
+        public int contarProductosEnEspera()
+        {
+            int productosEspera;
+            SqlConnection conexion;
+            SqlCommand comando;
+            SqlDataReader lector;
+
+            conexion = Conexion.agregarConexion();
+            try
+            {
+                comando = new SqlCommand(String.Format("select count(estado) from Producto where estado like '%espera%'"), conexion);
+                lector = comando.ExecuteReader();
+                productosEspera = int.Parse(lector.GetString(0));
+            }
+            catch (Exception e)
+            {
+                productosEspera = -1;
+                MessageBox.Show("Error: " + e);
+            }
+            conexion.Close();
+            return productosEspera;
+        }
     }
 }

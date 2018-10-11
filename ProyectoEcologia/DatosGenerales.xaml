@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoEcologia"
         mc:Ignorable="d"
-        Title="DatosGenerales" Height="300" Width="300">
+        Title="DatosGenerales" Height="300" Width="300" Loaded="Window_Loaded">
     <Grid>
         <Label x:Name="lbNumeroUsuarios" Content="Numero de usuarios:" HorizontalAlignment="Left" Margin="24,34,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbProductosVendidos" Content="Productos vendidos:" HorizontalAlignment="Left" Margin="24,93,0,0" VerticalAlignment="Top"/>
