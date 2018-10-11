@@ -23,5 +23,35 @@ namespace ProyectoEcologia
         {
             InitializeComponent();
         }
+
+        /**
+         * A partir de los datos ingresados por el usuario, se agrega una nueva tupla a la entidad Informacion en la bd
+         */
+        private void btModificar_Click(object sender, RoutedEventArgs e)
+        {
+            Informacion info;
+
+            try
+            {
+                info = new Informacion();
+                if (info.agregarInformacion(tbLink.Text, tbDatosBasura.Text) == 1)//se agrego a la bd
+                    MessageBox.Show("Informacion agregada correctamente");
+                else
+                    MessageBox.Show("Error: No se agrego informacion"); //quitar
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error: " + ex); //quitar
+            }
+        }
+
+        /**
+         * Regresa a ventana de Home y cierra esta 
+        */
+        private void btRegresar_Click(object sender, RoutedEventArgs e)
+        {
+            Home ventana = new Home();
+            this.Close();
+            ventana.Show();
+        }
     }
 }

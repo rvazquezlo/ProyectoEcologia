@@ -78,12 +78,13 @@ namespace ProyectoEcologia
          */
         public Producto obtenerSiguiente()
         {
-            SqlConnection conexion = Conexion.agregarConexion();
+            SqlConnection conexion;
             SqlCommand comando;
             SqlDataReader lector;
             Producto siguiente;
 
             siguiente = null;
+            conexion = Conexion.agregarConexion();
             try
             {
                 comando = new SqlCommand(String.Format(
@@ -112,9 +113,9 @@ namespace ProyectoEcologia
             SqlCommand comando;
             SqlConnection conexion;
 
+            conexion = Conexion.agregarConexion();
             try
             {
-                conexion = Conexion.agregarConexion();
                 if (estado == 0)
                     comando = new SqlCommand(String.Format("update Producto set estado = 'en venta' where idProducto = {0}", idProducto), conexion);
                 else
@@ -126,6 +127,7 @@ namespace ProyectoEcologia
                 actualizado = 0;
                 MessageBox.Show("Error: " + e);
             }
+            conexion.Close();
             return actualizado;
         } 
     }

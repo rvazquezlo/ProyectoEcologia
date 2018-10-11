@@ -10,10 +10,10 @@
         <Label x:Name="lbNumeroUsuarios" Content="Numero de usuarios:" HorizontalAlignment="Left" Margin="24,34,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbProductosVendidos" Content="Productos vendidos:" HorizontalAlignment="Left" Margin="24,93,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbProductosEnEspera" Content="Productos en espera:" HorizontalAlignment="Left" Margin="24,155,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbNumeroUsuarios" HorizontalAlignment="Left" Height="23" Margin="162,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"/>
-        <TextBox x:Name="tbProductosVendidos" HorizontalAlignment="Left" Height="23" Margin="162,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"/>
-        <TextBox x:Name="tbProductosEnEspera" HorizontalAlignment="Left" Height="23" Margin="162,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"/>
-        <Button x:Name="btRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="51,222,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="51,222,0,0" VerticalAlignment="Top" Width="75" Click="btRegresar_Click"/>
+        <Label x:Name="lbNumeroUsuarios2" Content="" HorizontalAlignment="Left" Margin="207,34,0,0" VerticalAlignment="Top" Width="59"/>
+        <Label x:Name="lbProductosVendidos2" Content="" HorizontalAlignment="Left" Margin="207,93,0,0" VerticalAlignment="Top" Width="59"/>
+        <Label x:Name="lbProductosEnEspera2" Content="" HorizontalAlignment="Left" Margin="207,155,0,0" VerticalAlignment="Top" Width="59"/>
 
     </Grid>
 </Window>
