@@ -48,6 +48,11 @@ namespace ProyectoEcologia
             this.idProducto = idProducto;
         }
 
+        public Producto(Int16 idProducto)
+        {
+            this.idProducto = idProducto;
+        }
+
         public String getNombre()
         {
             return nombre;
@@ -90,34 +95,32 @@ namespace ProyectoEcologia
             return siguiente;
         }
 
-        /**
-         * el nuevoEstado define si se aprobo un producto o no. 1 es que no se aprobo y 0 es que si se aprobo
-         * 
-         * Regresa actualizado 
+        /** Baja y modificacion
+         * @param estado: 0 si se aprobo un producto, 1 si no se aprobo
+         * Si no se aprobo, es necesario dar de baja el producto de la bd.
+         * Si se aprobo, se cambia el estado del producto a "en venta"
+         * @return: 0 si no se modifico nada en la bd, 1 si se modifico un elemento de la bd
          */
         public int actualizarEstado(int estado)
         {
             int actualizado;
-            String nuevoEstado;
             SqlCommand comando;
             SqlConnection conexion;
-            SqlDataReader lector;
 
             try
             {
                 conexion = Conexion.agregarConexion();
                 if (estado == 0)
-                    nuevoEstado = "En venta";
+                    comando = new SqlCommand(String.Format("update Producto set estado = 'en venta' where idProducto = {0}", idProducto), conexion);
                 else
-                    nuevoEstado = "Negado";
-                comando = new SqlCommand(String.Format("update Producto set estado = '{0}' where idProducto = {1}", nuevoEstado, idProducto), conexion);
-
-            }catch(Exception e)
+                    comando = new SqlCommand(String.Format("delete from Producto where idProducto = {0}", idProducto), conexion);
+                actualizado = comando.ExecuteNonQuery();
+            }
+            catch(Exception e)
             {
                 actualizado = 0;
                 MessageBox.Show("Error: " + e);
             }
-
             return actualizado;
         } 
     }

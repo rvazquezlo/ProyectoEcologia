@@ -25,7 +25,7 @@ namespace ProyectoEcologia
         }
 
         /**
-         * Metodo para obtener el siguiente producto en espera
+         * Metodo para obtener el siguiente producto en espera y poner su informacion en la ventana
          */
         private void obtenerSiguiente()
         {
@@ -58,7 +58,11 @@ namespace ProyectoEcologia
          */
         private void btSiguiente_Click(object sender, RoutedEventArgs e)
         {
+            Producto producto;
+
+            producto = new Producto()
             //Actualizar
+            
         }
     }
 }

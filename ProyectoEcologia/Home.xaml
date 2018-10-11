@@ -7,11 +7,12 @@
         mc:Ignorable="d"
         Title="Home" Height="300" Width="300">
     <Grid>
-        <RadioButton x:Name="rbAprobar" Content="Aprobar Productos" HorizontalAlignment="Left" Margin="30,65,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="rbModificarInfo" Content="Modificar informacion ecologica" HorizontalAlignment="Left" Margin="30,103,0,0" VerticalAlignment="Top" Width="193"/>
-        <RadioButton x:Name="rbInfoGeneral" Content="Informacion general" HorizontalAlignment="Left" Margin="30,138,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbAprobar" Content="Aprobar Productos" HorizontalAlignment="Left" Margin="30,40,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbModificarInfo" Content="Modificar informacion ecologica" HorizontalAlignment="Left" Margin="30,75,0,0" VerticalAlignment="Top" Width="193"/>
+        <RadioButton x:Name="rbInfoGeneral" Content="Informacion general" HorizontalAlignment="Left" Margin="30,108,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="rbSalir" Content="Salir" HorizontalAlignment="Left" Margin="30,174,0,0" VerticalAlignment="Top" Width="147"/>
         <Button x:Name="btAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="177,235,0,0" VerticalAlignment="Top" Width="75" Click="btAceptar_Click"/>
+        <RadioButton x:Name="rbBuscarProductos" Content="BuscarProductos" HorizontalAlignment="Left" Margin="30,138,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>

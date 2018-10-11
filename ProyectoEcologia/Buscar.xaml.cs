@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace ProyectoEcologia
 {
     /// <summary>
-    /// Lógica de interacción para Bucar.xaml
+    /// Lógica de interacción para Buscar.xaml
     /// </summary>
-    public partial class Bucar : Window
+    public partial class Buscar : Window
     {
-        public Bucar()
+        public Buscar()
         {
             InitializeComponent();
         }

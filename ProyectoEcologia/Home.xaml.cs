@@ -47,6 +47,12 @@ namespace ProyectoEcologia
                 this.Hide();
                 ventana.Show();
             }
+            else if (rbBuscarProductos.IsChecked == true)
+            {
+                Buscar ventana = new Buscar();
+                this.Hide();
+                ventana.Show();
+            }
             //no se usa else simple porque si no se selecciona ninguna opcion, se queda en la misma ventana
             else if (rbSalir.IsChecked == true) 
             {
