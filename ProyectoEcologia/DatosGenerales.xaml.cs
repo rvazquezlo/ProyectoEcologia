@@ -57,7 +57,7 @@ namespace ProyectoEcologia
                     //Poner la informacion en sus espacios designados en la ventana DatosGenerales
                     lbNumeroUsuarios2.Content = numeroUsuarios.ToString();
                     lbProductosEnEspera2.Content = productosEspera.ToString();
-                    lbProductosVendidos2.Content = lbProductosVendidos2.ToString();
+                    lbProductosVendidos2.Content = productosVendidos.ToString();
                 }
                 else
                     MessageBox.Show("Error en las cuentas");//Quitar

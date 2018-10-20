@@ -48,18 +48,20 @@ namespace ProyectoEcologia
             SqlCommand comando;
             int numeroUsuarios;
 
+            numeroUsuarios = -1;//se asigna un numero irreal para alertar de error
             conexion = Conexion.agregarConexion();//abrir conexion
             try
             {
                 comando = new SqlCommand(String.Format("select count(Cliente.nombre) from Cliente"), conexion);//query
                 lector = comando.ExecuteReader();//ejecutar
-                numeroUsuarios = int.Parse(lector.GetString(0)); //obtener informacion de la consulta de sql
+                if (lector.Read())
+                    numeroUsuarios = lector.GetInt32(0);
+                //obtener informacion de la consulta de sql
                 lector.Close();
             }
             catch(Exception e)
             {
                 MessageBox.Show("error: " + e);
-                numeroUsuarios = -1;
             }
             conexion.Close();
             return numeroUsuarios;

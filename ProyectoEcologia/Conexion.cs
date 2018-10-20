@@ -20,9 +20,8 @@ namespace ProyectoEcologia
 
             try
             {
-                conexion = new SqlConnection("Data Source=112SALAS21;Initial Catalog=NatureYou;Persist Security Info=True;User ID=sa;Password=sqladmin");//cambiar dependiendo de la maquina que se utilice
+                conexion = new SqlConnection("Data Source=112SALAS04;Initial Catalog=NatureYou;Persist Security Info=True;User ID=sa;Password=sqladmin");//cambiar dependiendo de la maquina que se utilice
                 conexion.Open();
-                MessageBox.Show("Conectado");//Quitar despues de pruebas
             }
             catch (Exception e)
             {

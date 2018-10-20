@@ -45,7 +45,7 @@ namespace ProyectoEcologia
             {
                 //Agregar informacion a lugares respectivos
                 lbNombre2.Content = producto.getNombre();
-                lbDescripcion2.Content = producto.getDescripcion();
+                txbDescripcion.Text = producto.getDescripcion();
                 lbPrecio2.Content = "$" + producto.getPrecio().ToString();
                 lbNumeroProducto2.Content = producto.getIdProducto().ToString();
             }
@@ -74,7 +74,7 @@ namespace ProyectoEcologia
             try
             {
                 //actualizar
-                producto = new Producto(Int16.Parse(lbNumeroProducto2.ContentStringFormat));
+                producto = new Producto(Int32.Parse(lbNumeroProducto2.Content.ToString()));
                 if (rbAprobar.IsChecked == true)
                     estado = 0;
                 else

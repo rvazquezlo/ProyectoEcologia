@@ -12,11 +12,11 @@ namespace ProyectoEcologia
     {
         private String estado;
         private String categoria;
-        private double precio;
+        private String precio;
         private String nombre;
         private String descripcion;
-        private Int16 idProducto;
-
+        private Int32 idProducto;
+   
         /**
          * Constructor vacio que asigna cadenas vacias a los atributos de tipo String y un 0 a los atributos de tipo numerico
          */
@@ -25,7 +25,7 @@ namespace ProyectoEcologia
 
             estado = "";
             categoria = "";
-            precio = 0;
+            precio = "";
             nombre = "";
             descripcion = "";
             idProducto = 0;
@@ -35,7 +35,7 @@ namespace ProyectoEcologia
          * Constructor con algunos atributos. Los demas se llenan con cadenas vacias o ceros
          * @param: estado del producto (en espera, en venta, vendido), categoria a la que pertenece, precio de venta, nombre que asigna el vendedor, descripcion que da el vendedor
          */
-        public Producto(String estado, String categoria, double precio, String nombre, String descripcion)
+        public Producto(String estado, String categoria, String precio, String nombre, String descripcion)
         {
             this.estado = estado;
             this.categoria = categoria;
@@ -49,7 +49,7 @@ namespace ProyectoEcologia
           * Constructor con algunos atributos. Los demas se llenan con cadenas vacias o ceros
           * @param: precio de venta, nombre que asigna el vendedor, descripcion que da el vendedor, numero unico que identifica al producto
           */
-        public Producto(double precio, String nombre, String descripcion, Int16 idProducto)
+        public Producto(String precio, String nombre, String descripcion, Int32 idProducto)
         {
             this.precio = precio;
             this.nombre = nombre;
@@ -63,7 +63,7 @@ namespace ProyectoEcologia
          * Constructor con algunos atributos. Los demas se llenan con cadenas vacias o ceros
          * @param: precio de venta, nombre que asigna el vendedor, descripcion que da el vendedor, numero unico que identifica al producto
          */
-        public Producto(double precio, String nombre, String descripcion, String estado)
+        public Producto(String precio, String nombre, String descripcion, String estado)
         {
             this.precio = precio;
             this.nombre = nombre;
@@ -77,7 +77,7 @@ namespace ProyectoEcologia
          * Constructos unicamente con idProducto
          * @param: numero unico que identifica al producto
          */
-        public Producto(Int16 idProducto)
+        public Producto(Int32 idProducto)
         {
             this.idProducto = idProducto;
         }
@@ -101,7 +101,7 @@ namespace ProyectoEcologia
         /**
          * @return: precio de venta
          */
-        public double getPrecio()
+        public String getPrecio()
         {
             return precio;
         }
@@ -109,7 +109,7 @@ namespace ProyectoEcologia
         /**
          * @return: numero unico que identifica al producto
          */
-        public Int16 getIdProducto()
+        public Int32 getIdProducto()
         {
             return idProducto;
         }
@@ -145,11 +145,11 @@ namespace ProyectoEcologia
             try
             {
                 comando = new SqlCommand(String.Format(
-                    "select top 1 (precio, nombre, descripcion, idProducto) from Producto where estado like '%espera%'"),
+                    "select top 1 precio, nombre, descripcion, idProducto from Producto where estado like '%espera'"),
                     conexion);//query para obtener todos los datos del primer producto de la bd que aparezca en estado "en espera"
                 lector = comando.ExecuteReader();
                 if (lector.Read())//Si se encontraron datos para la consulta solicitada en la bd
-                    siguiente = new Producto(lector.GetDouble(0), lector.GetString(1), lector.GetString(2), lector.GetInt16(3));//se agregan datos a un objeto de tipo producto
+                    siguiente = new Producto(lector.GetDecimal(0).ToString(), lector.GetString(1), lector.GetString(2), lector.GetInt32(3));//se agregan datos a un objeto de tipo producto
                 lector.Close();
             }catch(Exception e)
             {
@@ -200,16 +200,17 @@ namespace ProyectoEcologia
             SqlCommand comando;
             SqlDataReader lector;
 
+            productosVendidos = -1;//Se asigna un numero irreal para la situacion que alerta de error
             conexion = Conexion.agregarConexion();//se abre conexion
             try
             {
-                comando = new SqlCommand(String.Format("select count(estado) from Producto where estado like '%vendido%'"), conexion);//Query para contar productos en estado "vendido"
+                comando = new SqlCommand(String.Format("select count(estado) from Producto where estado like '%vendido'"), conexion);//Query para contar productos en estado "vendido"
                 lector = comando.ExecuteReader();
-                productosVendidos = int.Parse(lector.GetString(0));//se guarda el resultado de la consulta (numero de productos en estado "vendidos")
+                if(lector.Read())
+                    productosVendidos = lector.GetInt32(0);//se guarda el resultado de la consulta (numero de productos en estado "vendidos")
                 lector.Close();
             }catch(Exception e)
             {
-                productosVendidos = -1;//Se asigna un numero irreal para la situacion que alerta de error
                 MessageBox.Show("Error: " + e);
             }
             conexion.Close();//Se cierra por seguridad
@@ -227,16 +228,18 @@ namespace ProyectoEcologia
             SqlCommand comando;
             SqlDataReader lector;
 
+
+            productosEspera = -1;//Se asigna un numero irreal para la situacion que alerta de error
             conexion = Conexion.agregarConexion();
             try
             {
-                comando = new SqlCommand(String.Format("select count(estado) from Producto where estado like '%espera%'"), conexion);
+                comando = new SqlCommand(String.Format("select count(estado) from Producto where estado like '%espera'"), conexion);
                 lector = comando.ExecuteReader();
-                productosEspera = int.Parse(lector.GetString(0));
+                if(lector.Read())
+                    productosEspera = lector.GetInt32(0);
             }
             catch (Exception e)
             {
-                productosEspera = -1;
                 MessageBox.Show("Error: " + e);
             }
             conexion.Close();
@@ -265,7 +268,7 @@ namespace ProyectoEcologia
                 lector = comando.ExecuteReader();
                 while (lector.Read())
                 {
-                    producto = new Producto(lector.GetDouble(2), lector.GetString(0), lector.GetString(1), lector.GetString(3));
+                    producto = new Producto(lector.GetDecimal(2).ToString(), lector.GetString(0), lector.GetString(1), lector.GetString(3));
                     productos.Add(producto);
                 }
 

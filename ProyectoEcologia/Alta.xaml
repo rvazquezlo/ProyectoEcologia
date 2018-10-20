@@ -15,11 +15,11 @@
         <Label x:Name="lbDescripcion" Content="Descripcion:" HorizontalAlignment="Left" Margin="248,66,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbNombre" Content="Nombre:" HorizontalAlignment="Left" Margin="248,26,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbPrecio" Content="Precio:" HorizontalAlignment="Left" Margin="33,149,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbNombre2" Content="" HorizontalAlignment="Left" Margin="309,26,0,0" VerticalAlignment="Top" Width="114"/>
-        <Label x:Name="lbDescripcion2" Content="" HorizontalAlignment="Left" Margin="248,97,0,0" VerticalAlignment="Top" Height="102" Width="175"/>
+        <Label x:Name="lbNombre2" Content="" HorizontalAlignment="Left" Margin="309,26,0,0" VerticalAlignment="Top" Width="130"/>
         <Label x:Name="lbPrecio2" Content="" HorizontalAlignment="Left" Margin="101,149,0,0" VerticalAlignment="Top" Width="87"/>
         <Label x:Name="lbNumeroProducto" Content="Numero de producto:" HorizontalAlignment="Left" Margin="33,181,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbNumeroProducto2" Content="" HorizontalAlignment="Left" Margin="188,181,0,0" VerticalAlignment="Top" Width="60"/>
+        <TextBlock x:Name="txbDescripcion" HorizontalAlignment="Left" Margin="248,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="101" Width="129"/>
 
     </Grid>
 </Window>

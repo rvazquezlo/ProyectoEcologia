@@ -57,7 +57,7 @@ namespace ProyectoEcologia
          */
         public int agregarInformacion(String link, String informacion)
         {
-            int agregado;
+            int agregado, id;
             SqlConnection conexion;
             SqlCommand comando, comando2;
             SqlDataReader lector;
@@ -65,10 +65,18 @@ namespace ProyectoEcologia
             conexion = Conexion.agregarConexion();//se abre conexion con sql
             try
             {
-                comando = new SqlCommand(String.Format("select bottom 1 idInformacion from Informacion"), conexion);//query para poder general el idInformacion de la tupla que se va a agregar
+                comando = new SqlCommand(String.Format("select max(idInformacion) from Informacion"), conexion);//query para poder general el idInformacion de la tupla que se va a agregar
                 lector = comando.ExecuteReader();
+                try//este try catch se utiliza en caso de que no hayan noticias. 
+                {
+                    lector.Read();
+                    id = lector.GetInt16(0) + 1;
+                }catch(Exception ex)
+                {
+                    id = 1; //La primera informacion
+                }
                 comando2 = new SqlCommand(String.Format("insert into Informacion (idInformacion, datos, noticia) values ({0}, '{1}', '{2}')",
-                lector.GetInt16(0) + 1, link, informacion), conexion);//Se agregan datos a la bd. El idInformacion se genera con base en el anterior.
+                id, link, informacion), conexion);//Se agregan datos a la bd. El idInformacion se genera con base en el anterior.
                 lector.Close();
                 agregado = comando2.ExecuteNonQuery();//Regresa el numero de filas modificadas en la bd
             }
