@@ -233,16 +233,17 @@ namespace ProyectoEcologia
             conexion = Conexion.agregarConexion();
             try
             {
-                comando = new SqlCommand(String.Format("select count(estado) from Producto where estado like '%espera'"), conexion);
+                comando = new SqlCommand(String.Format("select count(estado) from Producto where estado like '%espera'"), conexion);//Query para contar productos en estado "en espera"
                 lector = comando.ExecuteReader();
-                if(lector.Read())
-                    productosEspera = lector.GetInt32(0);
+                if (lector.Read())
+                    productosEspera = lector.GetInt32(0);//se guarda el resultado de la consulta (numero de productos en estado "vendidos")
+                lector.Close();//se cierra por seguridad
             }
             catch (Exception e)
             {
                 MessageBox.Show("Error: " + e);
             }
-            conexion.Close();
+            conexion.Close();//Se cierra por seguridad
             return productosEspera;
         }
 
@@ -260,18 +261,18 @@ namespace ProyectoEcologia
             Producto producto;
 
             conexion = Conexion.agregarConexion();
-            productos = new List<Producto>();
+            productos = new List<Producto>();//lista en donde se van a guardar los productos
             try
             {
                 comando = new SqlCommand(String.Format
-                    ("select nombre, descripcion, precio, estado from Producto where idCategoria = {0}", idCategoria), conexion);
+                    ("select nombre, descripcion, precio, estado from Producto where idCategoria = {0}", idCategoria), conexion);//Query para los productos de cierta categoria
                 lector = comando.ExecuteReader();
-                while (lector.Read())
+                while (lector.Read())//mientras hayan datos
                 {
-                    producto = new Producto(lector.GetDecimal(2).ToString(), lector.GetString(0), lector.GetString(1), lector.GetString(3));
-                    productos.Add(producto);
-                }
-
+                    producto = new Producto(lector.GetDecimal(2).ToString(), lector.GetString(0), lector.GetString(1), lector.GetString(3)); //se crea un nuevo objeto de clase Producto
+                    productos.Add(producto); //se agregan objetos a la lista
+                } 
+                lector.Close();//se cierra por seguridad
             }
             catch (Exception e)
             {

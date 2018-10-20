@@ -63,7 +63,8 @@ namespace ProyectoEcologia
             {
                 producto = new Producto();
                 dgProductos.ItemsSource = producto.buscarProductoPorCategoria(cbCategorias.SelectedIndex + 1);//carga lista de productos
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show("error: " + ex);
             }
