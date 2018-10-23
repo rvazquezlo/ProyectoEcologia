@@ -47,7 +47,7 @@ namespace ProyectoEcologia
                 comando = new SqlCommand(String.Format("select contrasena from Usuario where nombreUsuario = '{0}'",
                     tbUsuario.Text), conexion);//query solicitando contrasena correspondiente al nombre de usuario ingresado en el espacio correspondiente
                 lector = comando.ExecuteReader();
-                if (lector.Read()) //hubo una contrasena para el usuario ingresado
+                if (lector.Read() ) //hubo una contrasena para el usuario ingresado
                 {
                     if (lector.GetString(0).Equals(pboxContrasena.Password.ToString()))//La contrasena que ingreso el usuario es correcta
                     {

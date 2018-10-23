@@ -70,7 +70,8 @@ namespace ProyectoEcologia
                 try//este try catch se utiliza en caso de que no hayan noticias. 
                 {
                     lector.Read();
-                    id = lector.GetInt16(0) + 1;
+                    id = lector.GetInt32(0) + 1;
+                    
                 }catch(Exception ex)
                 {
                     id = 1; //La primera informacion

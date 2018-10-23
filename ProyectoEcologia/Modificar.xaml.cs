@@ -34,7 +34,6 @@ namespace ProyectoEcologia
             try
             {
                 info = new Informacion();
-                MessageBox.Show(tbDatosBasura.Text);
                 if (info.agregarInformacion(tbLink.Text, tbDatosBasura.Text) == 1)//se agrego a la bd con el metodo agregarInformacion
                     MessageBox.Show("Informacion agregada correctamente");
                 else
