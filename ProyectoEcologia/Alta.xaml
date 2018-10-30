@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Alta" Height="367.279" Width="467.647" Loaded="Window_Loaded">
     <Grid>
-        <Image x:Name="foto1" HorizontalAlignment="Left" Height="100" Margin="33,26,0,0" VerticalAlignment="Top" Width="178"/>
+        
         <Button x:Name="btRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="33,296,0,0" VerticalAlignment="Top" Width="75" Click="btRegresar_Click"/>
         <Button x:Name="btSiguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="279,296,0,0" VerticalAlignment="Top" Width="75" Click="btSiguiente_Click"/>
         <RadioButton x:Name="rbAprobar" Content="Aprobar" HorizontalAlignment="Left" Margin="288,222,0,0" VerticalAlignment="Top"/>
