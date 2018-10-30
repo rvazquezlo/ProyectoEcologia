@@ -10,12 +10,12 @@ namespace ProyectoEcologia
 {
     class Producto
     {
-        private String estado;
-        private String categoria;
-        private String precio;
-        private String nombre;
-        private String descripcion;
-        private Int32 idProducto;
+        public String estado;
+        public String categoria;
+        public String precio;
+        public String nombre;
+        public String descripcion;
+        public Int32 idProducto;
    
         /**
          * Constructor vacio que asigna cadenas vacias a los atributos de tipo String y un 0 a los atributos de tipo numerico
@@ -281,5 +281,7 @@ namespace ProyectoEcologia
             conexion.Close();
             return productos;
         }
+   
+
     }
 }
