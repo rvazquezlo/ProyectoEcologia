@@ -11,12 +11,11 @@
         <Button x:Name="btModificar" Content="Modificar" HorizontalAlignment="Left" Margin="405,249,0,0" VerticalAlignment="Top" Width="75" Click="btModificar_Click" />
         <Label x:Name="lbLink" Content="Link de noticia:" HorizontalAlignment="Left" Margin="31,140,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbLink" HorizontalAlignment="Left" Height="23" Margin="31,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="449"/>
-        <Label x:Name="lbFotos" Content="Fotos:" HorizontalAlignment="Left" Margin="40,285,0,0" VerticalAlignment="Top"/>
-        <Image x:Name="foto1" HorizontalAlignment="Left" Height="100" Margin="81,328,0,0" VerticalAlignment="Top" Width="100"/>
-        <Image x:Name="foto2" HorizontalAlignment="Left" Height="100" Margin="323,328,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.441,-0.089"/>
+        
         <Button x:Name="btModificarFotos" Content="Modificar" HorizontalAlignment="Left" Margin="405,449,0,0" VerticalAlignment="Top" Width="75" Height="17"/>
         <Button x:Name="btRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="31,512,0,0" VerticalAlignment="Top" Width="75" Click="btRegresar_Click"/>
         <Label x:Name="lbDatosBasura" Content="Datos sobre basura:" HorizontalAlignment="Left" Margin="31,29,0,0" VerticalAlignment="Top"/>
-
     </Grid>
 </Window>
+
+
