@@ -77,7 +77,7 @@ namespace ProyectoEcologia
                     id = 1; //La primera informacion
                 }
                 comando2 = new SqlCommand(String.Format("insert into Informacion (idInformacion, datos, noticia) values ({0}, '{1}', '{2}')",
-                id, link, informacion), conexion);//Se agregan datos a la bd. El idInformacion se genera con base en el anterior.
+                id, informacion, link), conexion);//Se agregan datos a la bd. El idInformacion se genera con base en el anterior.
                 lector.Close();
                 agregado = comando2.ExecuteNonQuery();//Regresa el numero de filas modificadas en la bd
             }
