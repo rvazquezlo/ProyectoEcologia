@@ -29,12 +29,9 @@ namespace ProyectoEcologia
          */
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Conexion conexion;
-
             try
             {
-                conexion = new Conexion();
-                conexion.llenarCombo(cbCategorias);//metodo en conexion que llena combo
+                Conexion.llenarCombo(cbCategorias);//metodo en conexion que llena combo
             }
             catch(Exception ex)//no necesario
             {
