@@ -60,9 +60,11 @@ namespace ProyectoEcologia
                 }
                 else
                     MessageBox.Show("Usuario equivocado. Por favor intente de nuevo");
+                lector.Close();
+                conexion.Close();
             }catch(Exception ex)
             {
-                MessageBox.Show("error: " + ex);//Quitar despues de pruebas
+                MessageBox.Show("error: " + ex);
             }  
         }  
     }
