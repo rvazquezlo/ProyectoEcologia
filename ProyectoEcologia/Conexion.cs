@@ -34,7 +34,7 @@ namespace ProyectoEcologia
         /**
          * Llena el combo box de las categorias
          */
-        public void llenarCombo(ComboBox cb)
+        public static void llenarCombo(ComboBox cb)
         {
             SqlCommand comando;
             SqlDataReader lector;
